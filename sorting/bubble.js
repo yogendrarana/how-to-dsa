@@ -1,8 +1,19 @@
 /*
-    This algorith has the worst performance of all the sorting algorithms. It is not recommended to use it in production.
-    Has a complexity of O(n^2) meaning that for each element in the array, it will have to loop through the entire array.
-    Has a space complexity of O(1) because it does not create any new data structures.
+    Algorithm 
+    1. Initialization: The algorithm starts with the entire list considered as an unsorted sublist.
+    2. Find the minimum: Iterate through the unsorted sublist to find the minimum element.
+    3. Swap: Swap the minimum element found in step 2 with the first element of the unsorted sublist.
+    4. Move the boundary: Move the boundary between the sorted and unsorted sublists one element to the right.
+    5. Repeat: Repeat steps 2-4 until the entire list is sorted.
 */
+
+/*
+    Time Complexity: O(n^2)
+    Space Complexity: O(1)
+    In-Place: Yes
+    Stable: No
+*/
+
 
 function bubbleSort(arr) {
     let len = arr.length;
