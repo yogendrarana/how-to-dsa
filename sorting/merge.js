@@ -5,6 +5,7 @@
     3. Merge the two halves.
 */
 
+
 /*
     Time Complexity:
     Best Case Time Complexity: O(n log n)
@@ -17,12 +18,39 @@
 */
 
 
+function mergeSort(array) {
+    if (array.length === 1) {
+        return array;
+    }
 
-function mergeSort(arr) {
+    const middle = Math.floor(array.length / 2);
+    const left = array.slice(0, middle);
+    const right = array.slice(middle);
 
+    return merge(mergeSort(left), mergeSort(right));
 }
 
-const arr = [5, 3, 8, 1, 9, 6, 7];
-const sortedArray = mergeSort(arr);
 
-console.log("sortedArray: ", sortedArray);
+function merge(left, right) {
+    let resultArray = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            resultArray.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            resultArray.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}
+
+
+// Example usage:
+const arr = [4, 2, 7, 1, 9, 5, 3];
+const sortedArr = mergeSort(arr);
+console.log(sortedArr);
