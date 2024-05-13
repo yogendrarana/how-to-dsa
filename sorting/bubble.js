@@ -7,6 +7,7 @@
     5. Repeat: Repeat steps 2-4 until the entire list is sorted.
 */
 
+
 /*
     Time Complexity: O(n^2)
     Space Complexity: O(1)
@@ -31,7 +32,8 @@ function bubbleSort(arr) {
     return arr;
 }
 
+
+// Example usage:
 const unsortedArr = [5, 100, 2, 1, 3, 4]
 const sortedArrt = bubbleSort(unsortedArr)
-
 console.log("sortedArrt: ", sortedArrt)

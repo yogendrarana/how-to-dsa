@@ -7,12 +7,14 @@
     5. Repeat: Repeat steps 2-4 until the entire list is sorted.
 */
 
+
 /*
     Time Complexity: O(n^2)
     Space Complexity: O(1)
     In-Place: Yes
     Stable: No
 */
+
 
 function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
@@ -33,7 +35,8 @@ function selectionSort(arr) {
     return arr;
 }
 
+
+// Example usage:
 const unsortedArr = [5, 100, 2, 1, 3, 4]
 const sortedArr = selectionSort(unsortedArr)
-
 console.log("sortedArray: ", sortedArr)

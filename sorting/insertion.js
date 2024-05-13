@@ -7,6 +7,7 @@
     5. Repeat steps 1 to 4 for the remaining elements of the array.
 */
 
+
 /*
     Time Complexity:
     Best Case Time Complexity: O(n)
@@ -17,6 +18,7 @@
     In-Place: Yes
     Stable: Yes
 */
+
 
 function inserttionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
@@ -37,6 +39,8 @@ function inserttionSort(arr) {
 
 }
 
+
+// Example usage:
 const arr = [5, 3, 8, 1, 9, 6, 7];
 const sortedArray = inserttionSort(arr);
 console.log("sortedArray: ", sortedArray);
