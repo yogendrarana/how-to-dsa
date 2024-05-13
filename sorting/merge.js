@@ -18,20 +18,7 @@
 */
 
 
-function mergeSort(array) {
-    if (array.length === 1) {
-        return array;
-    }
-
-    const middle = Math.floor(array.length / 2);
-    const left = array.slice(0, middle);
-    const right = array.slice(middle);
-
-    return merge(mergeSort(left), mergeSort(right));
-}
-
-
-function merge(left, right) {
+function mergeSort(left, right) {
     let resultArray = [];
     let leftIndex = 0;
     let rightIndex = 0;
