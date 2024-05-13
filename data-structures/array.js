@@ -1,9 +1,10 @@
 /*
-    Array is a collection of elements of the same type stored in contiguous memory locations.
-    It is a data structure that stores elements of the same data type.
-    The size of an array is fixed.
-    The size of an array must be specified before storing elements in it.
-    The size of an array cannot be changed once it is declared.
+    Array In JavaScript:
+    1. Array is a collection of elements of the same type stored in contiguous memory locations.
+    2. It is a data structure that stores elements of the same data type.
+    3. The size of an array is fixed.
+    4. The size of an array must be specified before storing elements in it.
+    5. The size of an array cannot be changed once it is declared.
 */
 
 /* 
