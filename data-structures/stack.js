@@ -9,6 +9,20 @@
         - isEmpty: Returns true if stack is empty, else false.
 */
 
+
+/*
+    Time Complexity:
+    - Push: O(1)
+    - Pop: O(1)
+    - Peek: O(1)
+    - isEmpty: O(1)
+
+    Space Complexity: O(n)
+    In-Place: No
+    Stable: Yes
+*/
+
+
 /*
     Stack implementation using Array in JavaScript
 */
