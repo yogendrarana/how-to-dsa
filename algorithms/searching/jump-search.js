@@ -46,12 +46,12 @@ function jumpSort (array, value) {
 
 
 // Example usage:
-const arr = [2, 3, 4, 10, 40, 5, 8];
+const arr = [2, 7, 4, 10, 40, 5, 8, 3];
 const value = 3;
 
 const index = jumpSort(arr, value);
 if (index === -1) {
     console.log(`${value} is not found in the array`);
 } else {
-    console.log(`${value} lies on the index number ${index}`); // Output: 1
+    console.log(`${value} lies on the index number ${index}`);
 }
