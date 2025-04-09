@@ -30,6 +30,7 @@
         - toString(): Returns a string representing the array.
         - toLocaleString(): Returns a localized string representing the array.
         - isArray(): Determines whether the passed value is an array.
+    
     3. Iteration Methods:
         - forEach(): Calls a function for each element in the array.
         - map(): Creates a new array with the results of calling a provided function on every element in the array.
@@ -40,6 +41,7 @@
         - some(): Tests whether at least one element in the array passes the test implemented by the provided function.
         - find(): Returns the value of the first element in the array that satisfies the provided testing function.
         - findIndex(): Returns the index of the first element in the array that satisfies the provided testing function.
+    
     4. Length Methods:
         - length: Returns the number of elements in an array.        
 */

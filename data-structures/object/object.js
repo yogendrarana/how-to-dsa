@@ -41,6 +41,7 @@
         - Object.isExtensible(obj): Determines if an object is extensible.
         - Object.isSealed(obj): Determines if an object is sealed.
         - Object.isFrozen(obj): Determines if an object is frozen.
+    
     6. Object String Conversion:
         - Object.toString(): Returns a string representing the object.
 
