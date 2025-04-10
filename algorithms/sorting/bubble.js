@@ -18,17 +18,14 @@
 
 function bubbleSort(arr) {
     let len = arr.length;
-
     for (let i = 0; i < len - 1; i++) {
-        for (j = 0; j < len - 1; j++) {
+        for (let j = 0; j < len - 1 - i; j++) {
             if (arr[j] > arr[j + 1]) {
-                let temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                // Swap arr[j] and arr[j + 1], ES6 destructuring assignment
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
             }
         }
     }
-
     return arr;
 }
 
