@@ -20,7 +20,7 @@
 */
 
 
-function inserttionSort(arr) {
+function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
 
         const currentElement = arr[i];
@@ -42,5 +42,5 @@ function inserttionSort(arr) {
 
 // Example usage:
 const arr = [5, 3, 8, 1, 9, 6, 7];
-const sortedArray = inserttionSort(arr);
+const sortedArray = insertionSort(arr);
 console.log("sortedArray: ", sortedArray);
