@@ -24,40 +24,36 @@
 */
 
 
-function binarySearch(arr, value) {
-    const middle = Math.floor(arr.length / 2);
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
 
-    if (arr[middle] === value) {
-        return middle;
-    }
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
 
-    if (arr.length === 1) {
-        return -1;
-    }
-
-    if (value > arr[middle]) {
-        const result = binarySearch(arr.slice(middle), value);
-        if (result === -1) {
-            return -1;
+        if (arr[mid] === target) {
+            return mid;
         }
-        return middle + result;
+
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
     }
 
-    const result = binarySearch(arr.slice(0, middle), value);
-    if (result === -1) {
-        return -1;
-    }
-    return result;
+    return -1;
 }
+
 
 // Example usage:
 const arr = [2, 3, 4, 10, 40, 5, 8];
-const value = 1;
+const target = 10;
 
-const index = binarySearch(arr, value);
+const index = binarySearch(arr, target);
 
 if (index === -1) {
-    console.log(`${value} is not found in the array`);
+    console.log(`${target} is not found in the array`);
 } else {
-    console.log(`${value} lies on the index number ${index}`);
+    console.log(`${target} lies on the index number ${index}`);
 }
