@@ -18,22 +18,34 @@
 */
 
 
-function mergeSort(left, right) {
-    let resultArray = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
+function mergeSort(arr) {
+    if (arr.length <= 1) return arr;
 
-    while (leftIndex < left.length && rightIndex < right.length) {
-        if (left[leftIndex] < right[rightIndex]) {
-            resultArray.push(left[leftIndex]);
-            leftIndex++;
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+
+    return merge(left, right);
+}
+
+function merge(left, right) {
+    const result = [];
+
+    let i = 0, j = 0;
+
+    // Merge the two arrays while sorting
+    while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) {
+            result.push(left[i]);
+            i++;
         } else {
-            resultArray.push(right[rightIndex]);
-            rightIndex++;
+            result.push(right[j]);
+            j++;
         }
     }
 
-    return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+    // Add any remaining elements
+    return result.concat(left.slice(i)).concat(right.slice(j));
 }
 
 
