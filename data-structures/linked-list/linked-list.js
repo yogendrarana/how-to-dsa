@@ -1,7 +1,7 @@
 /*
     Linked List
-    1. A linked list is a linear data structure consisting of a sequence of elements called nodes.
-    2. Each node contains a data element and a reference (link) to the next node in the sequence.
+    1. A linked list is a linear value structure consisting of a sequence of elements called nodes.
+    2. Each node contains a value element and a reference (link) to the next node in the sequence.
     3. The last node in the list typically points to null, indicating the end of the list.
     4. The first node is called the head and the last node is called the tail.
     5. Following are the types of linked list:
@@ -44,8 +44,8 @@
 
 
 class Node {
-    constructor(data) {
-        this.data = data;
+    constructor(value) {
+        this.value = value;
         this.next = null;
     }
 }
@@ -58,19 +58,21 @@ class LinkedList {
     }
 
     // Insertion operations
-    insertAtBeginning(data) {
-        const newNode = new Node(data);
+    insertAtStart(value) {
+        const newNode = new Node(value);
         newNode.next = this.head;
         this.head = newNode;
         this.size++;
     }
 
-    insertAtEnd(data) {
-        const newNode = new Node(data);
+    // Insert at end
+    insertAtEnd(value) {
         if (!this.head) {
-            this.head = newNode;
+            this.head = node;
         } else {
             let currentNode = this.head;
+            const newNode = new Node(value);
+            
             while (currentNode.next) {
                 currentNode = currentNode.next;
             }
@@ -79,100 +81,99 @@ class LinkedList {
         this.size++;
     }
 
-    insertAtPostion(data, index) {
-        if (index < 0 || index > this.size) {
-            return;
+
+    // Insert at specific position, here position means index
+    insertAtIndex(value, index) {
+        if (index <= 0) {
+            this.insertAtStart(value);
+        } else if (index >= this.size) {
+            this.insertAtEnd(value);
+        } else {
+            let count = 0;
+            let prevNode = null;
+            let currentNode = this.head;
+            const newNode = new Node(value);
+            
+            while (count < index) {
+                prevNode = currentNode;
+                currentNode = currentNode.next;
+                count++;
+            }
+            
+            prevNode.next = newNode;
+            newNode.next = currentNode;
         }
-
-        if (index === 0) {
-            this.insertAtBeginning(data);
-            return;
-        }
-
-        const newNode = new Node(data);
-        let currentNode = this.head;
-        let count = 0;
-
-        while (currentNode && count < index - 1) {
-            currentNode = currentNode.next;
-            count++;
-        }
-
-        newNode.next = currentNode.next;
-        currentNode.next = newNode;
-        this.size++;
     }
 
 
     // Deletion operations
-    deleteAtBeginning() {
+    deleteAtStart() {
         if (!this.head) {
             return;
         }
-        const removedNode = this.head;
+
         this.head = this.head.next;
-        removedNode.next = null;
         this.size--;
     }
 
     deleteAtEnd() {
-        if (!this.head) {
-            return;
-        }
-
+        if (!this.head) return;
+        
         if (!this.head.next) {
             this.head = null;
-            return;
+        } else {
+            let prevNode = null;
+            let currentNode = this.head;
+            
+            while (currentNode.next) {
+                prevNode = currentNode;
+                currentNode = currentNode.next;
+            }
+            
+            prevNode.next = null;
         }
-
-        let currentNode = this.head;
-        while (currentNode.next.next) {
-            currentNode = currentNode.next;
-        }
-        const removedNode = currentNode.next;
-        currentNode.next = null;
-        removedNode.next = null;
         this.size--;
     }
 
-    deleteAtPosition(position) {
-        if (index < 0 || index >= this.size) {
-            return;
-        }
-
+    deleteAtIndex(index) {
+        if (index < 0 || index >= this.size) return;
+    
         if (index === 0) {
-            this.removeFromHead();
-            return;
+            this.deleteAtStart();
+        } else if (index === this.size - 1) {
+            this.deleteAtEnd();
+        } else {
+            let count = 0;
+            let prevNode = null;
+            let currentNode = this.head;
+    
+            while (count < index) {
+                prevNode = currentNode;         
+                currentNode = currentNode.next; 
+                count++;
+            }
+    
+            prevNode.next = currentNode.next;  
+            currentNode.next = null;       
+            this.size--;
         }
-
-        let currentNode = this.head;
-        let count = 0;
-
-        while (currentNode && count < index - 1) {
-            currentNode = currentNode.next;
-            count++;
-        }
-
-        const removedNode = currentNode.next;
-        currentNode.next = removedNode.next;
-        removedNode.next = null;
-        this.size--;
     }
 
     getAtIndex(index) {
         if (index < 0 || index >= this.size) {
+            console.log('Invalid index');
             return null;
         }
 
-        let currentNode = this.head;
         let count = 0;
+        let currentNode = this.head;
 
         while (currentNode && count < index) {
             currentNode = currentNode.next;
             count++;
         }
 
-        return currentNode ? currentNode.data : null;
+        return currentNode ? currentNode.value : null;
     }
 
 
@@ -180,17 +181,17 @@ class LinkedList {
     display() {
         let currentNode = this.head;
         while (currentNode) {
-            console.log(currentNode.data);
+            console.log(currentNode.value);
             currentNode = currentNode.next;
         }
     }
 
 
     // Searching operation
-    search(data) {
+    search(value) {
         let currentNode = this.head;
         while (currentNode) {
-            if (currentNode.data === data) {
+            if (currentNode.value === value) {
                 return true;
             }
             currentNode = currentNode.next;
@@ -217,10 +218,10 @@ class LinkedList {
             currentNode = this.head;
             while (currentNode.next) {
                 nextNode = currentNode.next;
-                if (currentNode.data > nextNode.data) {
-                    temp = currentNode.data;
-                    currentNode.data = nextNode.data;
-                    nextNode.data = temp;
+                if (currentNode.value > nextNode.value) {
+                    temp = currentNode.value;
+                    currentNode.value = nextNode.value;
+                    nextNode.value = temp;
                     isSwapped = true;
                 }
                 currentNode = currentNode.next;
@@ -246,26 +247,25 @@ class LinkedList {
     }
 
 
-    // Get Nth node
+    // Get Nth node, position means index
     getNthNode(position) {
-        if (position < 0) {
-            console.log('Invalid position');
+        if (position < 0 || position >= this.size) {
             return;
         }
 
-        let currentNode = this.head;
         let count = 0;
-        while (currentNode && count < position) {
+        let currentNode = this.head;
+
+        while (count < position) {
             currentNode = currentNode.next;
             count++;
         }
 
         if (currentNode === null) {
-            console.log('Invalid position');
             return;
         }
 
-        return currentNode.data;
+        return currentNode.value;
     }
 
 
@@ -279,7 +279,7 @@ class LinkedList {
             fastPtr = fastPtr.next.next;
         }
 
-        return slowPtr.data;
+        return slowPtr.value;
     }
 
 
@@ -347,7 +347,7 @@ class LinkedList {
 
 // Example Usage:
 const linkedList = new LinkedList();
-linkedList.insertAtBeginning(10);
+linkedList.insertAtStart(10);
 linkedList.insertAtEnd(20);
 linkedList.insertAtEnd(30);
 linkedList.insertAtEnd(40);
@@ -355,7 +355,7 @@ linkedList.insertAtEnd(50);
 linkedList.insertAtEnd(60);
 
 linkedList.display(); // 10 20 30 40 50 60
-// linkedList.deleteAtBeginning();
+// linkedList.deleteAtStart();
 // linkedList.display(); // 20 30 40 50 60
 // linkedList.deleteAtEnd();
 // linkedList.display(); // 20 30 40 50
@@ -363,7 +363,7 @@ linkedList.display(); // 10 20 30 40 50 60
 // linkedList.display(); // 20 40 50
 // console.log(linkedList.search(40)); // true
 // console.log(linkedList.search(100)); // false
-// linkedList.insertAtPostion(30, 1);
+// linkedList.insertAtPosition(30, 1);
 // linkedList.display(); // 20 30 40 50
 // linkedList.sort();
 // linkedList.display(); // 20 30 40 50
